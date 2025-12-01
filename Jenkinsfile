@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+        githubPush()
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -10,8 +14,7 @@ pipeline {
 
         stage('Run Python Script') {
             steps {
-
-                bat 'python add.py'
+                bat 'python app.py'
             }
         }
     }
